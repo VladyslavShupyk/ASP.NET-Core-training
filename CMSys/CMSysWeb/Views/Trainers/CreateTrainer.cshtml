@@ -1,0 +1,122 @@
+﻿@using CMSysWeb.Models
+@model CreateTrainer
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Create Trainer - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/courses" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/trainers" class="nav-item active" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainer-groups-logo"></div>
+                            <a href="/admin/trainergroups" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Trainer Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="users-logo"></div>
+                            <a href="/admin/users" class="nav-item" asp-controller="User" asp-action="ShowUsers">Users</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-arrow">
+                    <i class="arrow left"></i>
+                </div>
+            </div>
+            <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                <i class="arrow right"></i>
+            </div>
+        </div>
+        <div class="header-content-box">
+            <div class="header">
+                <div class="user-login-container">
+                    <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                    <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                </div>
+            </div>
+            <div class="content">
+                <p class="page-name">Create Trainer</p>
+                <div class="create-course-container">
+                    <form style="font-size:14px;">
+                        <div class="form-group" style="margin-top:10px;">
+                            <label for="username" style="color:rgb(128,128,128);margin-left:10px; padding-top:10px;display:block;">User</label>
+                            <select class="custom-select" id="username" style="color:rgb(128,128,128);margin-left:10px; width:500px">
+                                @foreach (var user in Model.Users)
+                                {
+                                    <option value="@user.Id">@user.FullName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="trainer-group" style="color:rgb(128,128,128);margin-left:10px;display:block">Trainer Group</label>
+                            <select class="custom-select" id="trainer-group" style="color:rgb(128,128,128);margin-left:10px; width:500px">
+                                @foreach (var trGroup in Model.TrainerGroups)
+                                {
+                                    <option value="@trGroup.Id">@trGroup.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="order" style="color:rgb(128,128,128);margin-left:10px;display:block">Order</label>
+                            <input type="number" class="form-control" id="order" placeholder="0" style="color:rgb(128,128,128);margin-left:10px;width:500px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="description" style="color:rgb(128,128,128);margin-left:10px;display:block">Description</label>
+                            <textarea class="form-control" id="description" style="color:rgb(128,128,128);margin-left:10px;width:500px"></textarea>
+                        </div>
+                        <button type="button" id="create-trainer-button" class="btn btn-primary" style="margin-left:10px;margin-bottom:10px;">Create</button>
+                    </form>
+                </div>
+                <div style="margin-left:20px;margin-top:10px;">
+                    <a href="javascript:history.back()" id="go-back" style="text-decoration:none; border:1px solid rgb(128,128,128);border-radius:4px;color:rgb(135,135,135);font-size:14px;padding:5px 5px 5px 5px;">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/trainer.js"></script>
+    <script src="~/js/nav-animation.js"></script>
+</body>
+</html>

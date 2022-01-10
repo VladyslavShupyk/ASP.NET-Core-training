@@ -1,0 +1,9 @@
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\bin\Debug\CMSys.Database.dacpac
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\bin\Debug\CMSys.Database.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\bin\Debug\CMSys.Database.pdb
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\Model.xml
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\refactor.xml
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\postdeploy.sql
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\predeploy.sql
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\CMSys.Database.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Database\obj\Debug\CMSys.Database.pdb

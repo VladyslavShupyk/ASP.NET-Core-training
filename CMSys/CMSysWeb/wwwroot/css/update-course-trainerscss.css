@@ -1,0 +1,49 @@
+﻿.update-course-trainers-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(233, 232, 232);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+.edit-trainers-container {
+    margin-top: 20px;
+    width: 600px;
+    border-radius: 5px;
+}
+.add-trainer-container {
+    margin-top: 20px;
+}
+.add-trainer-header {
+    padding-left:10px;
+    height: 40px;
+    background-color: rgb(233, 232, 232);
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    border-radius: 4px;
+}
+.add-trainer-body {
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0px 4px 4px -2px rgb(220 220 220);
+    border-end-end-radius: 4px 4px;
+    border-end-start-radius: 4px 4px;
+}
+.add-trainer-table-container {
+    padding: 0px 10px 10px 10px;
+    background-color: white;
+    box-shadow: 0px 4px 4px -2px rgb(220 220 220);
+    border-end-end-radius: 4px 4px;
+    border-end-start-radius: 4px 4px;
+}
+.trainer-item-delete {
+    margin-top: 5px;
+    border-color: red;
+    background-color: royalblue;
+    background-image: url("../images/delete-red-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

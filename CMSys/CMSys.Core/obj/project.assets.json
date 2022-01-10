@@ -1,0 +1,98 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "CMSys.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CMSys.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CMSys.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CMSys.Common/1.0.0": {
+      "type": "project",
+      "path": "../CMSys.Common/CMSys.Common.csproj",
+      "msbuildProject": "../CMSys.Common/CMSys.Common.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "CMSys.Common >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\VladyslavShupyk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Work\\ASP.NET Core Training\\CMSys\\CMSys.Core\\CMSys.Core.csproj",
+      "projectName": "CMSys.Core",
+      "projectPath": "C:\\Work\\ASP.NET Core Training\\CMSys\\CMSys.Core\\CMSys.Core.csproj",
+      "packagesPath": "C:\\Users\\VladyslavShupyk\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\ASP.NET Core Training\\CMSys\\CMSys.Core\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\VladyslavShupyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Work\\ASP.NET Core Training\\CMSys\\CMSys.Common\\CMSys.Common.csproj": {
+              "projectPath": "C:\\Work\\ASP.NET Core Training\\CMSys\\CMSys.Common\\CMSys.Common.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

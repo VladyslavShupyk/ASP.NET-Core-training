@@ -1,0 +1,26 @@
+﻿.trainer-groups-container {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    background-color: white;
+}
+
+.trainer-group-item-edit {
+    border-color: orange;
+    background-color: royalblue;
+    background-image: url("../images/edit-orange-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.trainer-group-item-delete {
+    border-color: red;
+    background-color: royalblue;
+    background-image: url("../images/delete-red-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

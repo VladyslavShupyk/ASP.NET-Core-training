@@ -1,0 +1,150 @@
+﻿@using CMSysWeb.Models
+@model UpdateUserRoles
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Update user - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/users.css" />
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/courses" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/trainers" class="nav-item" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainer-groups-logo"></div>
+                            <a href="/admin/trainergroups" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Trainer Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="users-logo"></div>
+                            <a href="/admin/users" class="nav-item active" asp-controller="User" asp-action="ShowUsers">Users</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-arrow">
+                    <i class="arrow left"></i>
+                </div>
+            </div>
+            <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                <i class="arrow right"></i>
+            </div>
+        </div>
+        <div class="header-content-box">
+            <div class="header">
+                <div class="user-login-container">
+                    <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                    <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                </div>
+            </div>
+            <div class="content">
+                <p class="page-name">Update for @Model.User.FullName</p>
+                <div class="update-user-container">
+                    <div class="change-password-container">
+                        <div class="change-password-header">
+                            <p style="color:royalblue; font-size:15px; margin-left:10px;padding-top:10px;">Change Password</p>
+                        </div>
+                        <div class="change-password-body">
+                            <div class="input-group" style="width:500px;">
+                                <label for="new-password" style="color:rgb(128,128,128);margin-left:10px; margin-top:10px;margin-right:20px;">New Password</label>
+                                <input type="password" class="form-control" id="new-password" style="color:rgb(128,128,128);margin-left:10px;width:500px;margin-right:10px;">
+                            </div>
+                            <div class="input-group" style="width:500px;">
+                                <label for="repeat-password" style="color:rgb(128,128,128);margin-left:10px; margin-top:10px;margin-right:20px;">Repeat Password</label>
+                                <input type="password" class="form-control" id="repeat-password" style="color: rgb(128,128,128); margin-left: 10px; width: 500px; margin-right: 10px;">
+                            </div>
+                            <button type="button" id="@Model.User.Id" class="btn btn-primary password-change-button" style="margin-left:10px;margin-bottom:10px;margin-top:20px;">Change</button>
+                        </div>
+                    </div>
+                    <div class="user-roles-container">
+                        <div class="change-password-header">
+                            <p style="color:royalblue; font-size:15px; margin-left:10px;padding-top:10px;">User Roles</p>
+                        </div>
+                        <div class="user-roles-table-container">
+                            <table class="table" style="color:rgb(128,128,128);font-size:16px;">
+                                <thead style="border-bottom:3px solid rgb(155,155,155); border-top:1px solid white;">
+                                    <tr>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="user-roles-table-body">
+                                    @foreach (var role in Model.User.Roles)
+                                    {
+                                        <tr>
+                                            <td>@role.Name</td>
+                                            <td>
+                                                <button type="button" id="@role.Id" class="btn user-role-item-delete user-event-item" onclick="DeleteRole(this)"></button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="input-group">
+                                <select class="custom-select" id="roles-select" style="color:rgb(128,128,128);">
+                                    @foreach (var role in Model.Roles)
+                                    {
+                                        @if (!Model.User.Roles.Contains(role))
+                                        {
+                                            <option value="@role.Id">@role.Name</option>
+                                        }
+                                    }
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary add-role" id="@Model.User.Id" type="button" style="background-color:royalblue; color:white;" onclick="AddRole(this)">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-left:20px;margin-top:20px;">
+                    <a href="javascript:history.back()" id="go-back" style="cursor:pointer;text-decoration:none; border:1px solid rgb(128,128,128);border-radius:4px;color:rgb(135,135,135);font-size:14px;padding:5px 5px 5px 5px;">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/user.js"></script>
+    <script src="~/js/nav-animation.js"></script>
+</body>
+</html>

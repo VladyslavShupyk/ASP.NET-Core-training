@@ -1,0 +1,114 @@
+﻿.user-list-image {
+    width: 60px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: 60px 80px;
+}
+
+.user-item-image-name {
+    display: flex;
+    flex-direction: row;
+}
+.user-list-request-container {
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    padding:10px;
+}
+.user-event-item {
+    margin-top:25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid;
+}
+.user-item-info {
+    border-color: royalblue;
+    background-color: royalblue;
+    background-image: url("../images/info-icon-white.png");
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.user-item-edit {
+    border-color: orange;
+    background-color: white;
+    background-image: url("../images/edit-orange-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.user-filter-container{
+    display:flex;
+    justify-content: space-between;
+}
+.user-search-button{
+    width:40px;
+    background-image:url(/images/search-icon-white.png);
+    background-size:25px 25px;
+    background-position: center;
+    background-repeat:no-repeat;
+}
+.profile-container {
+    margin-left:20px;
+    margin-top:20px;
+    width:550px;
+    display: flex;
+    border-radius: 2px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    color:rgb(128,128,128);
+}
+.profile-image{
+    width:170px;
+    background-size:170px 240px;
+}
+.update-user-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: rgb(233, 232, 232);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.change-password-container {
+    margin-top: 20px;
+}
+.change-password-header {
+    padding-left: 10px;
+    height: 40px;
+    background-color: rgb(233, 232, 232);
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    border-radius: 4px;
+}
+.change-password-body {
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0px 4px 4px -2px rgb(220 220 220);
+    border-end-end-radius: 4px 4px;
+    border-end-start-radius: 4px 4px;
+}
+.user-roles-container {
+    margin-top: 20px;
+    width: 600px;
+    border-radius: 5px;
+}
+.user-roles-table-container {
+    padding: 0px 10px 10px 10px;
+    background-color: white;
+    box-shadow: 0px 4px 4px -2px rgb(220 220 220);
+    border-end-end-radius: 4px 4px;
+    border-end-start-radius: 4px 4px;
+}
+.user-role-item-delete {
+    margin-top:-6px;
+    border-color: red;
+    background-color: white;
+    background-image: url("../images/delete-red-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -1,0 +1,134 @@
+﻿@using CMSys.Core.Entities.Catalog
+@model Course
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Course info - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item active" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        @if (User.IsInRole("Admin"))
+                        {
+                        <li>
+                            <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                        </li>
+                        <li>
+                            <div class='menu-title2'>
+                                <div class="list-logo"></div>
+                                <a href="/admin/courses" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='menu-title2'>
+                                <div class="list-logo"></div>
+                                <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='menu-title2'>
+                                <div class="list-logo"></div>
+                                <a href="/admin/trainers" class="nav-item" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='menu-title2'>
+                                <div class="trainer-groups-logo"></div>
+                                <a href="/admin/trainergroups" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Trainer Groups</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class='menu-title2'>
+                                <div class="users-logo"></div>
+                                <a href="/admin/users" class="nav-item" asp-controller="User" asp-action="ShowUsers">Users</a>
+                            </div>
+                        </li>
+                    }
+                    </ul>
+                    <div class="nav-arrow">
+                        <i class="arrow left"></i>
+                    </div>
+                </div>
+                <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                    <i class="arrow right"></i>
+                </div>
+            </div>
+            <div class="header-content-box">
+                <div class="header">
+                    <div class="user-login-container">
+                        <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                        <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                    </div>
+                </div>
+                <div class="content">
+                    <p style="font-size:20px;margin-left:20px;margin-top:20px;">@Model.Name</p>
+                    <div class="language" style="margin-left:20px;">@Model.CourseGroup.Name</div>
+                    <div class="type-of-lesson">@Model.CourseType.Name</div>
+                    <p class="description-item" style="margin-left:10px;">
+                        @Model.Description
+                    </p>
+                    <div class="search-course-trainers-block">
+                        <p style="display:inline-block;margin-left:20px;color:rgb(128,128,128);font-size:14px;">Trainers :</p>
+                        @foreach (var item in Model.Trainers)
+                        {
+                            <a id="@item.TrainerId" class="trainer-info-a" data-toggle="modal" data-target="#trainerModal" style="cursor:pointer; font-size:14px;color:royalblue;margin-left:10px;">@item.Trainer.User.FullName</a>
+                        }
+                        <div style="margin-left:20px;">
+                            <a href="javascript:history.back()" style="text-decoration:none; border:1px solid rgb(128,128,128);border-radius:4px;color:rgb(135,135,135);font-size:14px;padding:5px 5px 5px 5px;">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="trainerModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title name-item" id="trainerInformationModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-container">
+                            <div>
+                                <div class="trainer-modal-image"></div>
+                            </div>
+                            <div>
+                                <p class="trainer-modal-description"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="~/js/jquery-3.6.0.min.js"></script>
+        <script src="~/js/courses.js"></script>
+        <script src="~/js/nav-animation.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

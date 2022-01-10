@@ -1,0 +1,183 @@
+﻿@using CMSysWeb.Models
+@model CoursesTypesGroups
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Courses - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/courses" class="nav-item active" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/trainers" class="nav-item" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainer-groups-logo"></div>
+                            <a href="/admin/trainergroups" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Trainer Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="users-logo"></div>
+                            <a href="/admin/users" class="nav-item" asp-controller="User" asp-action="ShowUsers">Users</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-arrow">
+                    <i class="arrow left"></i>
+                </div>
+            </div>
+            <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                <i class="arrow right"></i>
+            </div>
+        </div>
+        <div class="header-content-box">
+            <div class="header">
+                <div class="user-login-container">
+                    <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                    <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                </div>
+            </div>
+            <div class="content">
+                <p class="page-name" style="display:inline-block">Courses</p>
+                <button class="btn btn-primary add-button" style="float:right;margin-right:20px;margin-top:20px;" onclick="location.href='@Url.Action("CreateCourse","Courses")'">Create Course</button>
+                <div class="filter-container">
+                    <div class="my-page-buttons">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div>
+                        <select class="select-types select">
+                            <option value="all" selected="selected">All types</option>
+                            @foreach (var item in Model.CoursesTypes)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                        <select class="select-groups select">
+                            <option value="all" selected="selected">All groups</option>
+                            @foreach (var item in Model.CoursesGroups)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="courses-list-request-container">
+                    <table class="table">
+                        <thead style="border-bottom:3px solid rgb(155,155,155);border-top:none;">
+                            <tr>
+                                <th scope="col" style="width:600px;">Name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Group</th>
+                                <th scope="col" style="width:200px;">Trainers</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Courses)
+                            {
+                                <tr>
+                                    <td>
+                                        <p class="courses-list-item-name">@item.Name</p>
+                                        <p>@item.Description</p>
+                                    </td>
+                                    <td>@item.CourseType.Name</td>
+                                    <td>@item.CourseGroup.Name</td>
+                                    <td>
+                                        <div>
+                                            @foreach (var trainer in item.Trainers)
+                                            {
+                                                <a class="courses-list-item-trainers">@trainer.Trainer.User.FullName</a>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button type="button" id="@item.Id" class="btn trainer-info" style="margin:0px;" data-toggle="modal" data-target="#trainerModal" onclick="location.href='@Url.RouteUrl(new { controller = "Courses", action = "SearchCourse", id = item.Id })'">
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button type="button" id="@item.Id" class="btn courses-list-item-edit courses-event-item" data-toggle="modal" data-target="#trainerModal" onclick="location.href='@Url.RouteUrl(new { controller = "Courses", action = "UpdateCourse", id = item.Id })'">
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button type="button" id="@item.Id" class="btn courses-list-item-edit-trainers courses-event-item" data-toggle="modal" data-target="#trainerModal" onclick="location.href='@Url.RouteUrl(new { controller = "Courses", action = "UpdateCourseTrainers", id = item.Id })'">
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button type="button" id="@item.Id" class="btn courses-list-item-delete courses-event-item" data-toggle="modal" data-target="#trainerModal">
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/courses.js"></script>
+    <script src="~/js/nav-animation.js"></script>
+    <script src="~/js/logoff.js"></script>
+</body>
+</html>
+

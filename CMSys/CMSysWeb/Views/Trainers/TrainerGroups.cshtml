@@ -1,0 +1,212 @@
+﻿@using CMSys.Core.Entities.Catalog
+@model IEnumerable<TrainerGroup>
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Trainer Groups - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesseet" href="~/css/Trainers.css">
+    <link rel="stylesheet" href="~/css/course-groups.css" />
+    <link rel="stylesheet" href="~/css/trainer-groups.css" />
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/courses" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/trainers" class="nav-item" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainer-groups-logo"></div>
+                            <a href="/admin/trainergroups" class="nav-item active" asp-controller="Courses" asp-action="CoursesList">Trainer Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="users-logo"></div>
+                            <a href="/admin/users" class="nav-item" asp-controller="User" asp-action="ShowUsers">Users</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-arrow">
+                    <i class="arrow left"></i>
+                </div>
+            </div>
+            <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                <i class="arrow right"></i>
+            </div>
+        </div>
+        <div class="header-content-box">
+            <div class="header">
+                <div class="user-login-container">
+                    <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                    <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                </div>
+            </div>
+            <div class="content">
+                <p class="page-name" style="display:inline-block">Trainers Groups</p>
+                <button class="btn btn-primary add-button" id="create-group-button" style="float:right;margin-right:20px;margin-top:20px;" data-toggle="modal" data-target="#createTrainerGroupModal">Create Group</button>
+                <div class="course-groups-container">
+                    <table class="table" style="color: rgb(128,128,128); font-size: 14px;">
+                        <thead style="border-bottom: 3px solid rgb(155,155,155);">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Order</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="course-group-list">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <p style="margin:5px;">@item.Name</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin:5px;">@item.Description</p>
+                                    </td>
+                                    <td>
+                                        <p style="margin:5px;">@item.VisualOrder</p>
+                                    </td>
+                                    <td>
+                                        <div style="display:inline-block;">
+                                            <button type="button" id="@item.Id" class="btn course-group-item-edit courses-event-item" onclick="EditTrainerGroup(this)"></button>
+                                        </div>
+                                        <div style="display:inline-block;">
+                                            <button type="button" id="@item.Id" class="btn course-group-item-delete courses-event-item" onclick="DeleteTrainerGroup(this)"></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="createTrainerGroupModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title name-item" id="group-create-modal-name" style="margin-left:-11px;">Create Group</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form style="font-size:14px;">
+                        <div class="form-group">
+                            <label for="group-name" style="color:rgb(128,128,128);display:block">Name</label>
+                            <input type="text" class="form-control" id="group-name" style="color:rgb(128,128,128);width:465px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-order" style="color:rgb(128,128,128);display:block">Order</label>
+                            <input type="number" class="form-control" id="group-order" value="0" color:rgb(128,128,128);width:465px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-description" style="color:rgb(128,128,128);display:block">Description</label>
+                            <textarea class="form-control" id="group-description" style="color:rgb(128,128,128);width:465px"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="save-trainer-group-button">Save</button>
+                    <button type="button" class="btn btn-secondary" id="close-create-trainer-group-modal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="errorTrainerGroupModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title name-item" id="group-create-modal-name" style="margin-left:-11px;">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style='color:red' id="error-modal-body-text"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="close-create-trainer-group-modal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editTrainerGroupModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title name-item" id="group-create-modal-name" style="margin-left:-11px;">Edit Group</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form style="font-size:14px;">
+                        <div class="form-group">
+                            <label for="group-name" style="color:rgb(128,128,128);display:block">Name</label>
+                            <input type="text" class="form-control" id="edit-group-name" style="color:rgb(128,128,128);width:465px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-order" style="color:rgb(128,128,128);display:block">Order</label>
+                            <input type="number" class="form-control" id="edit-group-order" value="0" color:rgb(128,128,128);width:465px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="group-description" style="color:rgb(128,128,128);display:block">Description</label>
+                            <textarea class="form-control" id="edit-group-description" style="color:rgb(128,128,128);width:465px"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="save-trainer-group-changes" onclick="SaveTrainerChanges()">Save</button>
+                    <button type="button" class="btn btn-secondary" id="close-create-trainer-group-modal" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/trainer-groups.js"></script>
+    <script src="~/js/nav-animation.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

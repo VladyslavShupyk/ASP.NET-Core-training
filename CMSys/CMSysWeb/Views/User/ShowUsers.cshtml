@@ -1,0 +1,213 @@
+﻿@using CMSysWeb.Models
+@model SearchUserModel
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Users - CMSys</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/users.css" />
+    <link rel="icon" href="/images/icon-cmsys-web.ico" />
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-nav">
+            <div class="left-plate">
+                <div class="logo-name">
+                    <div class="main-logo"></div>
+                    <p class="system-name">CMSYS</p>
+                </div>
+                <ul>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="courses-logo"></div>
+                            <a href="/courses" class="nav-item" asp-controller="Courses" asp-action="Courses">Courses</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainers-logo"></div>
+                            <a href="/trainers" class="nav-item" asp-controller="Trainers" asp-action="ShowTrainers">Trainers</a>
+                        </div>
+                        <hr style="border:none;height:1px;background-color:white;opacity:30%;margin-left: 10px;width:230px;">
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/courses" class="nav-item" asp-controller="Courses" asp-action="CoursesList">Course List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/coursegroups" class="nav-item" asp-controller="Courses" asp-action="CourseGroups">Course Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="list-logo"></div>
+                            <a href="/admin/trainers" class="nav-item" asp-controller="Trainers" asp-action="TrainerList">Trainer List</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="trainer-groups-logo"></div>
+                            <a href="/admin/trainergroups" class="nav-item" asp-controller="Trainers" asp-action="TrainerGroups">Trainer Groups</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='menu-title2'>
+                            <div class="users-logo"></div>
+                            <a href="/admin/users" class="nav-item active" asp-controller="User" asp-action="ShowUsers">Users</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-arrow">
+                    <i class="arrow left"></i>
+                </div>
+            </div>
+            <div class="nav-arrow" id="right-arrow" style="visibility:hidden;margin:0;margin-top:-42px;position:fixed;">
+                <i class="arrow right"></i>
+            </div>
+        </div>
+        <div class="header-content-box">
+            <div class="header">
+                <div class="user-login-container">
+                    <a class="user-name" style="color: rgb(128,128,128); cursor:pointer;" onclick="location.href='@Url.RouteUrl(new { controller = "Login", action = "Logoff" })'">@User.Identity.Name</a>
+                    <img src="~/images/login-user.png" style="height: 15px; width: 15px;margin-left:0px;">
+                </div>
+            </div>
+            <div class="content">
+                <p class="page-name" style="display:inline-block">Users</p>
+                <div class="user-list-request-container">
+                    <div class="user-filter-container">
+                        <div class="my-page-buttons" style="margin-left:0px;">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        @{
+                                            var prevPageNumber = Model.Users.Page - 1;
+                                            var nextPageNumber = Model.Users.Page + 1;
+                                            var prevPageBeforeTotal = Model.Users.TotalPages - 1;
+                                            var countbuttons = 3;
+                                            var counter = 0;
+                                        }
+                                        @if (!Model.Users.CanPrevious)
+                                        {
+                                            <a class="page-link" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="page-link" href="/admin/users/page/@prevPageNumber/@Model.Search" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        }
+                                    </li>
+                                    @for (int i = Model.Users.Page; i <= Model.Users.TotalPages; i++)
+                                    {
+                                        @if (counter < countbuttons)
+                                        {
+
+                                            @if (i != Model.Users.Page)
+                                            {
+                                                <li class="page-item"><a class="page-link" href="/admin/users/page/@i/@Model.Search">@i</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li class="page-item"><a class="page-link">@i</a></li>
+                                            }
+                                            counter++;
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                    }
+                                    @if (!Model.Users.CanNext)
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            <a class="page-link" href="/admin/users/page/@nextPageNumber/@Model.Search" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="input-group" style="width:500px;">
+                            <input type="text" class="form-control" id="search-user-name" placeholder="Search for.." style="color:rgb(128,128,128);height:38px;margin-top:17px;margin-left:180px;">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary user-search-button" id="search-user" type="button" style="background-color:royalblue;height:38px;margin-top:17px;z-index:0;" onclick="SearchUser()"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table" style="font-size:14px;color:rgb(128,128,128);">
+                        <thead style="border-bottom:3px solid rgb(155,155,155);border-top:none;">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Position</th>
+                                <th scope="col">Office</th>
+                                <th scope="col">Active?</th>
+                                <th scope="col" style="width:100px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model.Users.Items)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="user-item-image-name">
+                                            <div class="user-list-image" style="background-image:url(data:image/jpeg;base64,@Convert.ToBase64String(user.Photo))"></div>
+                                            <p style="margin-top:30px;margin-left:10px;">@user.FullName</p>
+                                        </div>
+                                    </td>
+                                    <td><p style="margin-top:30px;">@user.Department</p></td>
+                                    <td><p style="margin-top:30px;">@user.Position</p></td>
+                                    <td><p style="margin-top:30px;">@user.Location</p></td>
+                                    <td>
+                                        @if (user.EndDate == null)
+                                        {
+                                            <p style="margin-top:30px;">Yes</p>
+                                        }
+                                        else
+                                        {
+                                            <p style="margin-top:30px;">No</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div style="display:inline-block;">
+                                            <button type="button" class="btn user-item-info user-event-item" onclick="location.href='@Url.RouteUrl(new { controller = "User", action = "ShowUserInfo", id = user.Id })'"></button>
+                                        </div>
+                                        <div style="display:inline-block;">
+                                            <button type="button" id="@user.Id" class="btn user-item-edit user-event-item" onclick="location.href='@Url.RouteUrl(new { controller = "User", action = "UpdateUser", id = user.Id })'"></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <script src="~/js/user.js"></script>
+    <script src="~/js/nav-animation.js"></script>
+</body>
+</html>

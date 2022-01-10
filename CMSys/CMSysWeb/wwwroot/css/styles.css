@@ -1,0 +1,427 @@
+*{
+    margin : 0;
+    padding: 0;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+.main-container{
+    display: flex;
+    min-height: 100%;
+    background-color: rgb(233, 232, 232);
+}
+.left-nav{
+    background-color: royalblue;
+}
+.left-plate{
+    background-color: royalblue;
+    position: sticky;
+    top: 20px;
+    width: 250px;
+}
+.system-name{
+    font-size: 18px;
+    color : white;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+.nav-item{
+    margin-left: 5px;
+    color: rgb(190, 190, 190);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.active{
+    color: white !important;
+}
+.nav-item:hover{
+    color: white;
+    text-decoration: none;
+}
+.item{
+    background-color: wheat;
+}
+.header-content-box{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(233, 232, 232);
+}
+.header{
+    height: 80px;
+    width: 100%;
+    top: 0;
+    position: sticky;
+    background-color: rgb(248, 245, 244);
+    box-shadow: 0px 17px 10px -15px rgb(197, 197, 197); 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+}
+.user-name{
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: rgb(128, 128, 128);
+}
+.content
+{
+    width: 100%;
+    z-index:1;
+    background-color: rgb(233, 232, 232);
+}
+.page-name{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 25px;
+    color: rgb(54, 54, 54);
+}
+.filters{
+    margin-top: -30px;
+    top:120px;
+    position:sticky;
+    height: 100px;
+    background-color: rgb(233, 232, 232);
+}
+.select{
+    height : 35px;
+    color: rgb(128, 128, 128);
+    border-radius: 4px;
+}
+.select-types{
+    font-size: 15px;
+    margin-right: 10px;
+    width: 180px;
+}
+.select-groups{
+    font-size: 15px;
+    margin-right: 20px;
+    width: 364px;
+}
+.request-list{
+    background-color: rgb(233, 232, 232);
+}
+.request-item{
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(248, 245, 244);
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.trainer-category {
+    background-color: rgb(246 246 246);
+    height: 50px;
+    border-radius: 4px;
+}
+.trainer-category-name {
+    margin-left:15px;
+    padding-top:12px;
+    color: royalblue;
+    font-size: 16px;
+}
+.trainers-list {
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 0px 1px 1px rgb(212, 212, 212);
+    display: flex;
+    align-items: center;
+    padding-top:20px;
+    padding-bottom: 30px;
+    flex-wrap:wrap;
+}
+.trainer-item {
+    width: 240px;
+    height: 160px;
+    border-radius: 5px;
+    border: 1px solid rgb(225 225 225);
+    margin-top:10px;
+    margin-left: 15px;
+    display:flex;
+    flex-direction:row;
+}
+.trainer-image{
+    margin-left:10px;
+    margin-top:20px;
+    width:90px;
+    height: 120px;
+    background-repeat:no-repeat;
+}
+.trainer-fio{
+    color:royalblue;
+    align-content:center;
+}
+.trainer-name{
+    margin-bottom:0px;
+    margin-left:20px;
+    margin-top:40px;
+}
+.trainer-surname {
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+.trainer-info{
+    margin-top:10px;
+    margin-left:20px;
+    border-radius:4px;
+    width:30px;
+    height:30px;
+    background-color:royalblue;
+    background-image:url("../images/info-icon-white.png");
+    background-size: 25px 25px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.name-item{
+    padding-top: 10px;
+    padding-left: 10px;
+    color: rgb(128, 128, 128);
+    font-size: 18px;
+}
+.language{
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 5px;
+    color: white;
+    padding: 2px 5px 2px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    background-color: rgb(62, 194, 194);
+}
+.type-of-lesson{
+    display: inline-block;
+    margin-top: 5px;
+    background-color: grey;
+    color: white;
+    padding: 2px 5px 2px 5px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+.description-item{
+    padding-top: 10px;
+    padding-left: 10px;
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+}
+.more-info{
+    display: block;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    font-size: 13px;
+    color: royalblue;
+}
+
+.menu-title2 {
+    margin-top: 30px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.courses-logo {
+    background-image: url('../images/courses.png');
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+}
+.trainers-logo{
+    background-image: url('../images/trainers.png');
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+}
+.list-logo
+{
+    background-image: url('../images/list.png');
+    background-size: 18px 18px;
+    width: 18px; 
+    height: 18px;
+}
+.trainer-groups-logo{
+    background-image: url('../images/trainer-groups.png');
+    background-size: 18px 18px;
+    width: 18px; 
+    height: 18px;
+}
+.users-logo{
+    background-image: url('../images/users.png');
+    background-size: 18px 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.user-login-container {
+    margin-right: 10px;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.my-page-buttons {
+    margin-top: 17px;
+    margin-left: 20px;
+}
+.main-logo{
+    background-image: url('../images/smile-logo.png');
+    background-size: 40px 40px;
+    width: 40px; 
+    height: 40px;
+}
+.logo-name{
+    margin-top: 20px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.nav-arrow {
+    background-color: rgb(212, 212, 212);
+    width:40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-left: 110px;
+    margin-top: 50px;
+}
+.nav-arrow:hover{
+    background-color: rgb(130, 130, 130);
+    cursor:pointer;
+}
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display:inline-block;
+    padding: 5px;
+    margin-left:16px;
+    margin-top:13px;
+}
+.right {
+    margin-left:12px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+.modal-container{
+    display:flex;
+}
+.trainer-modal-image {
+    width: 90px;
+    height: 120px;
+}
+.trainer-modal-description {
+    margin-left:10px;
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+}
+.search-course-name {
+    font-size: 20px;
+    color: rgb(54, 54, 54);
+}
+.courses-list-request-container {
+    margin-left:20px;
+    margin-right:20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    background-color : white;
+    color: rgb(135,135,135) !important;
+    font-size:14px !important;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.courses-list-item-trainers{
+    display:block;
+    color:royalblue !important;
+    cursor:pointer;
+}
+.courses-list-item-name{
+    font-size:15px;
+    font-weight:bold;
+}
+.courses-event-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid;
+    background-color: white !important;
+}
+.courses-list-item-info{
+    border-color:royalblue;
+    background-image:url("../images/icon-info-blue.png");
+    background-size:30px 30px;
+}
+.courses-list-item-edit {
+    margin-top: 5px;
+    border-color: orange;
+    background-color: royalblue;
+    background-image: url("../images/edit-orange-icon.png");
+    background-size: 20px 20px;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.courses-list-item-edit-trainers {
+    margin-top: 5px;
+    border-color: orange;
+    background-color: royalblue;
+    background-image: url("../images/edit-trainers-orange-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.courses-list-item-delete {
+    margin-top: 5px;
+    border-color: red;
+    background-color: royalblue;
+    background-image: url("../images/delete-red-icon.png");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.add-button {
+    padding-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-image: url("/images/add-icon-white.png");
+    background-size: 17px 17px;
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+    background-position-y: 12px;
+}
+.create-course-container {
+    border-radius: 4px;
+    box-shadow: 0px 0px 4px 4px rgb(220 220 220);
+    background-color:white;
+    margin-left:20px;
+    margin-right:20px;
+}
+.course-list-info {
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    background-color: royalblue;
+    background-image: url("../images/info-icon-white.png");
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+

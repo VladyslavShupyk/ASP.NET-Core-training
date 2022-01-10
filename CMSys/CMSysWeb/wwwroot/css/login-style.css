@@ -1,0 +1,69 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifcursive;
+}
+.logincontent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    background-color: royalblue;
+}
+.loginform {
+    width: 450px;
+    height: 300px;
+    margin-left:37%;
+    margin-top:40px;
+}
+.loginlabel {
+    font-size: 20px;
+    color : grey;
+    margin-left: 170px;
+    margin-top: 40px;
+    position: absolute;
+}
+.loginemail{
+    margin-top:100px;
+}
+.inputtype {
+    background-color: #e8f0f7;
+}
+.btn-login {
+    background-color: royalblue;
+    color: white;
+}
+.nav-left-plate {
+    width: 250px;
+    height: 100vh;
+    background-color: royalblue;
+    color: white;
+    display: inline-block;
+}
+.cmsys-icon{
+    display:inline-block;
+    height:30px;
+    width:30px;
+}
+.cmsys-name {
+    display: inline-block;
+}
+.logo-name{
+    width: 100%;
+    height:100px;
+    padding-left:30%;
+    padding-top:10%;
+}
+.link{
+    color: red;
+}
+.nav-link:hover{
+    cursor: pointer;
+}
+.right-up-plate {
+    background-color: red;
+    width: 100%;
+    height: 150px;
+    display: inline-block;
+}
+

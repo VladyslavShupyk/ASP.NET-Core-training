@@ -1,0 +1,15 @@
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\CMSys.Core.deps.json
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\CMSys.Core.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\ref\CMSys.Core.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\CMSys.Core.pdb
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\CMSys.Common.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\bin\Debug\net5.0\CMSys.Common.pdb
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.csproj.AssemblyReference.cache
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.AssemblyInfoInputs.cache
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.AssemblyInfo.cs
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.csproj.CoreCompileInputs.cache
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.csproj.CopyComplete
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\ref\CMSys.Core.dll
+C:\Work\ASP.NET Core Training\CMSys\CMSys.Core\obj\Debug\net5.0\CMSys.Core.pdb
